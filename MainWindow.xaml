@@ -1,0 +1,90 @@
+﻿<Window x:Name="MainWindow1" x:Class="VectorCharMap.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VectorCharMap"
+        mc:Ignorable="d" FontSize="16"
+        Title="VectorCharMap" MinHeight="450" MinWidth="891">
+    <Grid>
+        <HeaderedItemsControl VerticalAlignment="Top" Header="MenuHeader" Panel.ZIndex="1">
+            <Menu x:Name="menu" ItemContainerStyle="{StaticResource MenuItemContainerDarkStyle}" Background="{x:Null}">
+                <MenuItem x:Name="File" Header="Файл">
+                    <MenuItem x:Name="File_Exit" Header="Изход" Click="File_Exit_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="Theme" Header="Тема">
+                    <MenuItem x:Name="Theme_Dark" Header="Тъмна" Click="Theme_Dark_Click" IsCheckable="True" IsChecked="False" />
+                </MenuItem>
+                <MenuItem x:Name="Lang" Header="Език">
+                    <MenuItem x:Name="Language_English" Header="English" Language="en" IsCheckable="True" Click="Language_Name_Click"/>
+                    <MenuItem x:Name="Language_Bulgarian" Header="Български" Language="bg" IsCheckable="True" Click="Language_Name_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="Help" Header="Помощ">
+                    <MenuItem x:Name="Help_HowToUse" Header="Начин на използване" Click="HowToUse_Click"/>
+                    <MenuItem x:Name="Help_About" Header="За..." Click="About_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="Debug" Header="Debug" IsCheckable="True" IsChecked="False" Click="Debug_Click" Visibility="Collapsed"></MenuItem>
+            </Menu>
+        </HeaderedItemsControl>
+
+
+        <Grid x:Name="textBlocks" Margin="0,29.96,0,0">
+            <TextBlock x:Name="Font" HorizontalAlignment="Left" Margin="22,0,0,0"
+                VerticalAlignment="Top" Width="300" Text="Шрифт"/>
+
+            <TextBlock x:Name="FontWeightLabel" HorizontalAlignment="Left" Margin="332,0,0,0" VerticalAlignment="Top" Width="100" Text="Тегло"/>
+            <Border x:Name="weightHelp" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Height="20" Margin="394.5,-2,0,0" Background="#00FF0000">
+                <TextBlock FontSize="14" Text="?" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.ToolTip>
+                        <ToolTip x:Name="weightHelpToolTip" Background="Black" Foreground="White" BorderBrush="#80808080" StaysOpen="True">
+                            <Grid>
+                                <TextBlock x:Name="openTypeWeightHelp">OpenType font weights:</TextBlock>
+                                <StackPanel Margin="0 30 0 0">
+                                    <TextBlock x:Name="weight_100">100 - Thin</TextBlock>
+                                    <TextBlock x:Name="weight_200">200 - Extra Light</TextBlock>
+                                    <TextBlock x:Name="weight_300">300 - Light</TextBlock>
+                                    <TextBlock x:Name="weight_400">400 - Normal</TextBlock>
+                                    <TextBlock x:Name="weight_500">500 - Medium</TextBlock>
+                                    <TextBlock x:Name="weight_600">600 - Semi-Bold</TextBlock>
+                                    <TextBlock x:Name="weight_700">700 - Bold</TextBlock>
+                                    <TextBlock x:Name="weight_800">800 - Extra Bold</TextBlock>
+                                    <TextBlock x:Name="weight_900">900 - Black</TextBlock>
+                                    <TextBlock x:Name="weight_950">950 - Extra Black</TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </ToolTip>
+                    </TextBlock.ToolTip>
+                </TextBlock>
+            </Border>
+            <TextBlock x:Name="FontStyleLabel" HorizontalAlignment="Left" Margin="418,0,0,0" VerticalAlignment="Top" Width="100" Text="Стил"/>
+            <TextBlock x:Name="FontStretchLabel" HorizontalAlignment="Left" Margin="540,0,0,0" VerticalAlignment="Top" Width="100" Text="Ширина"/>
+            <TextBlock x:Name="FontPreviewLabel" HorizontalAlignment="Left" Margin="662,0,0,0" VerticalAlignment="Top" Width="72" Text="Преглед" Visibility="Collapsed"/>
+            <TextBlock x:Name="FontOutputLabel" HorizontalAlignment="Left" Margin="662,0,0,0" VerticalAlignment="Top" Width="68" Text="Резултат"/>
+            <TextBlock x:Name="FontOutlinedLabel" HorizontalAlignment="Left" Margin="740,0,0,0" VerticalAlignment="Top" Text="Очертан"/>
+        </Grid>
+
+        <Grid x:Name="controls" Margin="0,45.96,0,0">
+            <ComboBox Template="{DynamicResource ComboBoxLightTemplate}" ItemContainerStyle="{DynamicResource ComboBoxLightItemContainerStyle}" x:Name="fontSelectionComboBox" HorizontalAlignment="Left" Height="33" Margin="22,8,0,0" VerticalAlignment="Top" Width="300" FontSize="20"/>
+            <ComboBox Template="{DynamicResource ComboBoxLightTemplate}" ItemContainerStyle="{DynamicResource ComboBoxLightItemContainerStyle}" x:Name="fontWeightComboBox"    HorizontalAlignment="Left" Height="33" Margin="332,8,0,0" VerticalAlignment="Top" Width="76" FontSize="20"/>
+            <ComboBox Template="{DynamicResource ComboBoxLightTemplate}" ItemContainerStyle="{DynamicResource ComboBoxLightItemContainerStyle}" x:Name="fontStyleComboBox"     HorizontalAlignment="Left" Height="33" Margin="418,8,0,0" VerticalAlignment="Top" Width="112" FontSize="20"/>
+            <ComboBox Template="{DynamicResource ComboBoxLightTemplate}" ItemContainerStyle="{DynamicResource ComboBoxLightItemContainerStyle}" x:Name="fontStretchComboBox"   HorizontalAlignment="Left" Height="33" Margin="540,8,0,0" VerticalAlignment="Top" Width="112" FontSize="20"/>
+            <TextBox Style="{DynamicResource TextBoxLightStyle}" Visibility="Collapsed" x:Name="previewFontSizeTextBox" HorizontalAlignment="Left" Height="33" Margin="662,8,0,0" VerticalAlignment="Top" Width="68" Padding="2 2 0 0" FontSize="20"/>
+            <TextBox Style="{DynamicResource TextBoxLightStyle}" x:Name="outputFontSizeTextBox"  HorizontalAlignment="Left" Height="33" Margin="662,8,0,0" VerticalAlignment="Top" Width="68" Padding="2 2 0 0" FontSize="20"/>
+            <CheckBox Style="{DynamicResource CheckBoxStyleLight}" Width="33" x:Name="FontOutLinedCheckBox" HorizontalAlignment="Left" Margin="755.05,8,0,0" Height="33" VerticalAlignment="Top" FontSize="20" Checked="FontOutLinedCheckBox_Checked" Unchecked="FontOutLinedCheckBox_Unchecked"/>
+
+            <Button Style="{DynamicResource ButtonStyleLight}" x:Name="exportAllButton" HorizontalAlignment="Left" Margin="814,8,0,0" Height="33" VerticalAlignment="Top" Content="Export All" Click="exportAllButton_Click" Padding="8,1,8,1"/>
+        </Grid>
+
+        <Grid x:Name="charGrid" Margin="0,93.96,17,0"></Grid>
+
+        <ScrollBar x:Name="charViewerScrollBar" Margin="0 93.96 0 0" HorizontalAlignment="Right" Scroll="charViewerScrollBar_Scroll"></ScrollBar>
+
+        <ScrollViewer x:Name="debugTextViewer" Margin="0 26 0 0" VerticalAlignment="Top" VerticalScrollBarVisibility="Auto" Visibility="Visible">
+            <Grid>
+                <TextBlock x:Name="debugText" Padding="10" Background="#F0FFFFFF" FontSize="16" FontWeight="Bold" HorizontalAlignment="Right" TextWrapping="Wrap"></TextBlock>
+            </Grid>
+        </ScrollViewer>
+
+        <ProgressBar x:Name="characterLoadingProgress" VerticalAlignment="Bottom" Height="20" Margin="0 0 17 0"></ProgressBar>
+    </Grid>
+</Window>

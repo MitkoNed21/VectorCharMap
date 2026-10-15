@@ -1,0 +1,32 @@
+﻿<Window x:Class="VectorCharMap.HowToUseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VectorCharMap"
+        mc:Ignorable="d" FontSize="16"
+        Title="How to use" Height="302" Width="530">
+    <ScrollViewer>
+        <StackPanel x:Name="TextBlocks">
+            <TextBlock x:Name="MainPurpose" TextWrapping="Wrap" Margin="10">
+            The main purpose of this application is to get a svg version of the glyph you select to any vector editing software.
+            </TextBlock>
+
+            <TextBlock x:Name="GetSvg" TextWrapping="Wrap" Margin="10">
+            In order to get a svg version of a glyph first select a font you like, select the character weight, style and stretch, set the desired character size in the 'Output' text box. Then drag a symbol from this application to the desired vector editing software. Every time you change the font the screen below will list every character that is available for the selected item.
+            </TextBlock>
+
+            <TextBlock x:Name="GetSvgFile" TextWrapping="Wrap" Margin="10">
+            You can also drag a glyph to a folder, the desktop or any file container to get a svg file of the character you started dragging.
+            </TextBlock>
+
+            <TextBlock x:Name="ChangeTheme" TextWrapping="Wrap" Margin="10">
+            You can change the theme of the application by selecting Theme > Dark.
+            </TextBlock>
+
+            <TextBlock x:Name="ExportAll" TextWrapping="Wrap" Margin="10">
+            You can change the theme of the application by selecting Theme > Dark.
+            </TextBlock>
+        </StackPanel>
+    </ScrollViewer>
+</Window>
